@@ -36,7 +36,7 @@ debian:
                 - python3 -m unittest discover -s unit -p '*Test.py' > /dev/null
                 - rm /var/mail/mail
                 - cp demo/AMiner/demo-config.py /tmp
-                - sudo chown -R aminer:aminer /tmp/lib
+                - chown -R aminer:aminer /tmp/lib
                 - chmod +x demo/AMiner/aminerDemo.sh
                 - ./demo/AMiner/aminerDemo.sh
                 - cd integration
@@ -81,7 +81,7 @@ ubuntu:
                 - rm /var/mail/mail
                 - cp demo/AMiner/demo-config.py /tmp
                 - chmod +x demo/AMiner/aminerDemo.sh
-                - sudo chown -R aminer:aminer /tmp/lib
+                - chown -R aminer:aminer /tmp/lib
                 - ./demo/AMiner/aminerDemo.sh
                 - cd integration
                 - cp config* /tmp
