@@ -37,6 +37,7 @@ debian:
                 - rm /var/mail/mail
                 - cp demo/AMiner/demo-config.py /tmp
                 - chown -R aminer:aminer /tmp/lib
+                - chown aminer:aminer /tmp/AMinerRemoteLog.txt
                 - chmod +x demo/AMiner/aminerDemo.sh
                 - ./demo/AMiner/aminerDemo.sh
                 - cd integration
@@ -82,6 +83,7 @@ ubuntu:
                 - cp demo/AMiner/demo-config.py /tmp
                 - chmod +x demo/AMiner/aminerDemo.sh
                 - chown -R aminer:aminer /tmp/lib
+                - chown aminer:aminer /tmp/AMinerRemoteLog.txt
                 - ./demo/AMiner/aminerDemo.sh
                 - cd integration
                 - cp config* /tmp
