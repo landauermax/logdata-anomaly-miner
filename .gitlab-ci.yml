@@ -33,6 +33,7 @@ debian:
                 - python3 -m unittest discover -s unit -p '*Test.py' > /dev/null
                 - rm /var/mail/mail
                 - cp demo/AMiner/demo-config.py /tmp
+                - chmod +x demo/AMiner/aminerDemo.sh
                 - ./demo/AMiner/aminerDemo.sh
                 - cd integration
                 - cp config* /tmp
@@ -71,6 +72,7 @@ ubuntu:
                 - chmod +x /usr/lib/logdata-anomaly-miner/AMiner
                 - python3 -m unittest discover -s unit -p '*Test.py' > /dev/null
                 - cp demo/AMiner/demo-config.py /tmp
+                - chmod +x demo/AMiner/aminerDemo.sh
                 - ./demo/AMiner/aminerDemo.sh
                 - rm /var/mail/mail
                 - cd integration
