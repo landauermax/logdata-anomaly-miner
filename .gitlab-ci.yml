@@ -4,6 +4,14 @@ sonarqube:
         script:
                 - $(find /opt/ -type f -name sonar-scanner) -Dsonar.projectName=Aminer-Dev -Dsonar.host.url=http://10.103.251.153:9000 -Dsonar.projectKey=deff975a5561d285e315daa894ab291c7bd10a19 -Dsonar.gitlab.max_major_issues_gate=0
 
+sonarqube aecid-testsuite:
+        image: git-service.ait.ac.at:8010/ict-caiscluster/logdata-anomaly-miner/aminer-debian
+        
+        script:
+                - git clone https://gitlab+deploy-token-aecidtestsuite:vu18Eo6k7xfA22vPvorx@git-service.ait.ac.at/ict-caiscluster/aecid-testsuite.git
+                - cd aecid-testsuite
+                - $(find /opt/ -type f -name sonar-scanner) -Dsonar.projectKey=aecid-testsuite -Dsonar.sources=. -Dsonar.host.url=http://10.103.251.153:9000 -Dsonar.login=8d5c9b3e6cc7b6b9c731f02fada0c4d5018f7d34
+
 debian:
         image: git-service.ait.ac.at:8010/ict-caiscluster/logdata-anomaly-miner/aminer-debian
 
@@ -22,8 +30,10 @@ debian:
                 - chown -R aminer:aminer /usr/lib/logdata-anomaly-miner
                 - chown -h aminer:aminer /usr/bin/AMiner
                 - chmod +x /usr/lib/logdata-anomaly-miner/AMiner
-                - python3 -m unittest discover -s unit -p '*Test.py'
+                - python3 -m unittest discover -s unit -p '*Test.py' > /dev/null
                 - rm /var/mail/mail
+                - cp demo/AMiner/demo-config.py /tmp
+                - ./demo/AMiner/aminerDemo.sh
                 - cd integration
                 - cp config* /tmp
                 - chmod +x aminerIntegrationTest.sh
@@ -59,7 +69,9 @@ ubuntu:
                 - chown -R aminer:aminer /usr/lib/logdata-anomaly-miner
                 - chown -h aminer:aminer /usr/bin/AMiner
                 - chmod +x /usr/lib/logdata-anomaly-miner/AMiner
-                - python3 -m unittest discover -s unit -p '*Test.py'
+                - python3 -m unittest discover -s unit -p '*Test.py' > /dev/null
+                - cp demo/AMiner/demo-config.py /tmp
+                - ./demo/AMiner/aminerDemo.sh
                 - rm /var/mail/mail
                 - cd integration
                 - cp config* /tmp
