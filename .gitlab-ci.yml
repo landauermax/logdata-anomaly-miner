@@ -24,6 +24,7 @@ debian:
                 - apt install systemd -y
                 - apt install dbus -y
                 - service dbus start
+                - pip3 install pytz
 
         script:
                 - ansible-playbook /opt/ansible/playbook.yml
@@ -69,6 +70,7 @@ ubuntu:
                 - apt install systemd -y
                 - apt install dbus -y
                 - service dbus start
+                - pip3 install pytz
         
         script:
                 - ansible-playbook /opt/ansible/playbook.yml
