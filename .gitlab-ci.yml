@@ -78,12 +78,12 @@ ubuntu:
                 - chown -R aminer:aminer /usr/lib/logdata-anomaly-miner
                 - chown -h aminer:aminer /usr/bin/AMiner
                 - chmod +x /usr/lib/logdata-anomaly-miner/AMiner
-                - python3 -m unittest discover -s unit -p '*Test.py' > /dev/null
-                - cp demo/AMiner/demo-config.py /tmp
-                - chmod +x demo/AMiner/aminerDemo.sh
-                - chown -R aminer:aminer /tmp/lib
-                - chown aminer:aminer /tmp/AMinerRemoteLog.txt
-                - ./demo/AMiner/aminerDemo.sh
+                #- python3 -m unittest discover -s unit -p '*Test.py' > /dev/null
+                #- cp demo/AMiner/demo-config.py /tmp
+                #- chmod +x demo/AMiner/aminerDemo.sh
+                #- chown -R aminer:aminer /tmp/lib
+                #- chown aminer:aminer /tmp/AMinerRemoteLog.txt
+                #- ./demo/AMiner/aminerDemo.sh
                 - cd integration
                 - cp config* /tmp
                 - chmod +x aminerIntegrationTest.sh
