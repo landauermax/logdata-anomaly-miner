@@ -33,6 +33,7 @@ debian:
                 - chown -R aminer:aminer /usr/lib/logdata-anomaly-miner
                 - chown -h aminer:aminer /usr/bin/AMiner
                 - chmod +x /usr/lib/logdata-anomaly-miner/AMiner
+                - rm /var/mail/mail
                 - python3 -m unittest discover -s unit -p '*Test.py' > /dev/null
                 - rm /var/mail/mail
                 - cp demo/AMiner/demo-config.py /tmp
@@ -78,6 +79,7 @@ ubuntu:
                 - chown -R aminer:aminer /usr/lib/logdata-anomaly-miner
                 - chown -h aminer:aminer /usr/bin/AMiner
                 - chmod +x /usr/lib/logdata-anomaly-miner/AMiner
+                - rm /var/mail/mail
                 - python3 -m unittest discover -s unit -p '*Test.py' > /dev/null
                 - rm /var/mail/mail
                 - cp demo/AMiner/demo-config.py /tmp
