@@ -16,6 +16,7 @@ debian:
         image: git-service.ait.ac.at:8010/ict-caiscluster/logdata-anomaly-miner/aminer-debian
 
         before_script:
+                - echo p | mail -u mail
                 - service rsyslog start
                 - service exim4 start
                 - apt install procps -y
