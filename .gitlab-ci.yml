@@ -88,7 +88,7 @@ ubuntu:
                 - cp config* /tmp
                 - chmod +x aminerIntegrationTest.sh
                 - chmod +x aminerIntegrationTest2.sh
-                - chown aminer:aminer /tmp/AMinerRemoteLog.txt
+                #- chown aminer:aminer /tmp/AMinerRemoteLog.txt
                 - ./aminerIntegrationTest.sh
                 - ./aminerIntegrationTest2.sh
                 - rm /var/mail/mail
