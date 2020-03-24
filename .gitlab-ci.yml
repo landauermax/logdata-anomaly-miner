@@ -66,8 +66,8 @@ ubuntu:
                 - service exim4 start
                 - pip3 install coverage
                 - apt install cpulimit -y
-                - apt install systemd -y
-                - service dbus start
+                #- apt install systemd -y
+                #- service dbus start
         
         script:
                 - ansible-playbook /opt/ansible/playbook.yml
@@ -83,7 +83,7 @@ ubuntu:
                 - chmod +x demo/AMiner/aminerDemo.sh
                 - chown -R aminer:aminer /tmp/lib
                 - chown aminer:aminer /tmp/AMinerRemoteLog.txt
-                - ./demo/AMiner/aminerDemo.sh
+                #- ./demo/AMiner/aminerDemo.sh
                 - cd integration
                 - cp config* /tmp
                 - chmod +x aminerIntegrationTest.sh
