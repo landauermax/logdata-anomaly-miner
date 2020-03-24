@@ -21,6 +21,7 @@ debian:
                 - apt install procps -y
                 - pip3 install coverage
                 - apt install cpulimit -y
+                - apt install systemd -y
 
         script:
                 - ansible-playbook /opt/ansible/playbook.yml
@@ -61,6 +62,7 @@ ubuntu:
                 - service exim4 start
                 - pip3 install coverage
                 - apt install cpulimit -y
+                - apt install systemd -y
         
         script:
                 - ansible-playbook /opt/ansible/playbook.yml
