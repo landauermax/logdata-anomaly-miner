@@ -80,7 +80,7 @@ ubuntu:
         script:
                 - find / -xdev 2>/dev/null -name "pytz" 
                 - export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.6/dist-packages
-                - echo $PYTHONPATH
+                - echo "$PYTHONPATH"
                 - ansible-playbook /opt/ansible/playbook.yml
                 - export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.6/dist-packages
                 - git clone https://gitlab+deploy-token-aecidtestsuite:vu18Eo6k7xfA22vPvorx@git-service.ait.ac.at/ict-caiscluster/aecid-testsuite.git
