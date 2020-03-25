@@ -21,8 +21,7 @@ debian:
                 - apt install procps -y
                 - pip3 install coverage
                 - apt install cpulimit -y
-                - apt install systemd -y
-                - systemctl start dbus
+                - service dbus start
 
         script:
                 - ansible-playbook /opt/ansible/playbook.yml
