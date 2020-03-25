@@ -25,7 +25,7 @@ debian:
                 - service dbus start
 
         script:
-                - sendmail root@localhost <<'EOF'
+                >- sendmail root@localhost <<'EOF'
 From: "test" <test@test>
 To: "test" <root@localhost>
 Reply-To: dev@null
