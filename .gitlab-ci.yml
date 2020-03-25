@@ -61,7 +61,7 @@ debian:
                 - cat /tmp/report
                 
         after_script:
-                - sleep 5
+                - sleep 120
                 - ls -la /var/spool/mail
                 - ls -la /var/mail
                 - cat /var/mail/mail
@@ -80,6 +80,9 @@ ubuntu:
         
         script:
                 - ansible-playbook /opt/ansible/playbook.yml
+                - find / -xdev 2>/dev/null -name "python3.*"
+                - find / -xdev 2>/dev/null -name "python3"
+                - find / -xdev 2>/dev/null -name "pytz*"
                 - runuser -u aminer -- pip3 install pytz
                 - runuser -u root -- pip3 install pytz
                 - git clone https://gitlab+deploy-token-aecidtestsuite:vu18Eo6k7xfA22vPvorx@git-service.ait.ac.at/ict-caiscluster/aecid-testsuite.git
