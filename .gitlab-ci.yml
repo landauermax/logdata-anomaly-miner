@@ -30,10 +30,10 @@ debian:
                 - git clone https://gitlab+deploy-token-aecidtestsuite:vu18Eo6k7xfA22vPvorx@git-service.ait.ac.at/ict-caiscluster/aecid-testsuite.git
                 - cp -r /builds/ict-caiscluster/logdata-anomaly-miner/source/root/usr/lib/logdata-anomaly-miner/aminer /builds/ict-caiscluster/logdata-anomaly-miner/aecid-testsuite/aminer
                 - cd aecid-testsuite
-                - ls /var/spool
+                - ls /var/spool/mail
                 - python3 -m unittest unit/events/DefaultMailNotificationEventHandlerTest.py
                 - chown -R aminer:aminer /usr/lib/logdata-anomaly-miner
-                - chown -h aminer:aminer /usr/bin/AMiner
+                - chown aminer:aminer /usr/bin/AMiner
                 - chmod +x /usr/lib/logdata-anomaly-miner/AMiner
                 - python3 -m unittest discover -s unit -p '*Test.py'
                 - rm /var/mail/mail
