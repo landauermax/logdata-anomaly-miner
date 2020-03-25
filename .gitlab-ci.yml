@@ -86,7 +86,7 @@ ubuntu:
                 - mkdir /tmp/lib/aminer 2> /dev/null
                 - chown -R aminer:aminer /tmp/lib
                 - cp demo/AMiner/demo-config.py /tmp
-                - runuser -u aminer -- AMiner --Foreground --Config /tmp/demo-config.py > /tmp/output &
+                - chmod +x /usr/lib/logdata-anomaly-miner/AMiner
                 - chmod +x demo/AMiner/aminerDemo.sh
                 - ./demo/AMiner/aminerDemo.sh > /tmp/demo
                 ##########
