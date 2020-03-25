@@ -157,7 +157,8 @@ events and send them via "sendmail" transport."""
 
     sendmail_args = ['sendmail']
     if self.sender_address is not None:
-      sendmail_args += ['-f', self.sender_address]
+      #sendmail_args += ['-f', self.sender_address]
+      sendmail_args += [self.sender_address]
     sendmail_args.append(self.recipient_address)
 # Start the sendmail process. Use close_fds to avoid leaking of
 # any open file descriptors to the new client.

@@ -40,7 +40,12 @@ class MatchValueStreamWriter(AtomHandlerInterface, TimeTriggeredComponentInterfa
       add_sep_flag = True
     if contains_data:
       if not isinstance(self.stream, _io.BytesIO):
-        self.stream.write(result.decode('utf-8'))
+        import sys
+        print("Python version")
+        print(sys.version)
+        print("Version info.")
+        print(sys.version_info)
+        self.stream.write(result.decode())
         self.stream.write('\n')
       else:
         self.stream.write(result)
