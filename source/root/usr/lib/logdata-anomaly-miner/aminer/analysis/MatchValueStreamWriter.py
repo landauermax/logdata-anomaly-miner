@@ -42,7 +42,7 @@ class MatchValueStreamWriter(AtomHandlerInterface, TimeTriggeredComponentInterfa
       if not isinstance(self.stream, _io.BytesIO):
         import sys
         print(result, file=sys.stderr)
-        self.stream.write(result.decode('utf-8', 'replace'))
+        self.stream.write(result.decode('ascii', 'ignore'))
         self.stream.write('\n')
       else:
         self.stream.write(result)
