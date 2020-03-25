@@ -65,7 +65,7 @@ debian:
                 - sleep 15
                 - ls -la /var/spool/mail
                 - ls -la /var/mail
-                - cat /var/mail/root
+                - cat /var/mail/mail
 
 ubuntu:
         image: git-service.ait.ac.at:8010/ict-caiscluster/logdata-anomaly-miner/aminer-ubuntu
@@ -78,8 +78,8 @@ ubuntu:
                 - apt install systemd -y
                 - service dbus start
                 - ln -s /usr/local/lib/python3.6/dist-packages/pytz /usr/lib/python3/dist-packages/pytz
-                #- ln -s /usr/local/lib/python3.6/dist-packages/pytz /usr/lib/python3.6/pytz
-                - ln -s /usr/local/lib/python3.6/dist-packages/pytz /usr/lib/python3.7/pytz
+                - ln -s /usr/local/lib/python3.6/dist-packages/pytz /usr/lib/python3.6/pytz
+                #- ln -s /usr/local/lib/python3.6/dist-packages/pytz /usr/lib/python3.7/pytz
                 #- ln -s /usr/local/lib/python3.6/dist-packages/pytz /usr/lib/python3.8/pytz
         
         script:
