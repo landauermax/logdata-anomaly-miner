@@ -85,6 +85,7 @@ ubuntu:
                 - mkdir /tmp/lib 2> /dev/null
                 - mkdir /tmp/lib/aminer 2> /dev/null
                 - chown -R aminer:aminer /tmp/lib
+                - chown aminer:aminer AMiner
                 - cp demo/AMiner/demo-config.py /tmp
                 - chmod +x demo/AMiner/aminerDemo.sh
                 - ./demo/AMiner/aminerDemo.sh > /tmp/demo
