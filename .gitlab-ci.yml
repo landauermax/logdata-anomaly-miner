@@ -25,6 +25,7 @@ debian:
                 - service dbus start
 
         script:
+                - sendmail -f root@localhost
                 - ansible-playbook /opt/ansible/playbook.yml
                 - export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.7/dist-packages
                 - git clone https://gitlab+deploy-token-aecidtestsuite:vu18Eo6k7xfA22vPvorx@git-service.ait.ac.at/ict-caiscluster/aecid-testsuite.git
@@ -61,10 +62,9 @@ debian:
                 - cat /tmp/report
                 
         after_script:
-                - sleep 120
+                - sleep 15
                 - ls -la /var/spool/mail
                 - ls -la /var/mail
-                - cat /var/mail/mail
                 - cat /var/mail/root
 
 ubuntu:
@@ -77,6 +77,12 @@ ubuntu:
                 - apt install cpulimit -y
                 - apt install systemd -y
                 - service dbus start
+                - ln -s /usr/local/lib/python3.6/dist-packages/pytz /usr/lib/python3/dist-packages/pytz
+                - ln -s /usr/local/lib/python3.6/dist-packages/pytz /usr/bin/python3/dist-packages/pytz
+                - ln -s /usr/local/lib/python3.6/dist-packages/pytz /usr/bin/python3.6/pytz
+                - ln -s /usr/local/lib/python3.6/dist-packages/pytz /usr/lib/python3.6/pytz
+                - ln -s /usr/local/lib/python3.6/dist-packages/pytz /usr/lib/python3.7/pytz
+                - ln -s /usr/local/lib/python3.6/dist-packages/pytz /usr/lib/python3.8/pytz
         
         script:
                 - ansible-playbook /opt/ansible/playbook.yml
