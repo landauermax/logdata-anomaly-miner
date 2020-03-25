@@ -42,9 +42,9 @@ class MatchValueStreamWriter(AtomHandlerInterface, TimeTriggeredComponentInterfa
       if not isinstance(self.stream, _io.BytesIO):
         import sys
         print("Python version")
-        print(sys.version)
+        print(sys.version, file=sys.stderr)
         print("Version info.")
-        print(sys.version_info)
+        print(sys.version_info, file=sys.stderr)
         self.stream.write(result.decode())
         self.stream.write('\n')
       else:
