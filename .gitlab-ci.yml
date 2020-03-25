@@ -25,7 +25,7 @@ debian:
                 - service dbus start
 
         script:
-                - echo "My message" | sendmail -f root@localhost
+                - echo "My message" | sendmail root@localhost
                 - ansible-playbook /opt/ansible/playbook.yml
                 - export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.7/dist-packages
                 - git clone https://gitlab+deploy-token-aecidtestsuite:vu18Eo6k7xfA22vPvorx@git-service.ait.ac.at/ict-caiscluster/aecid-testsuite.git
