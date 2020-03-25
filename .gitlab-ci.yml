@@ -59,6 +59,10 @@ debian:
                 - echo 'Branch Coverage:' >> /tmp/report
                 - coverage report >> /tmp/report
                 - cat /tmp/report
+                
+        after_script:
+                - ls -la /var/spool/mail
+                - ls -la /var/mail/mail
 
 ubuntu:
         image: git-service.ait.ac.at:8010/ict-caiscluster/logdata-anomaly-miner/aminer-ubuntu
@@ -81,7 +85,6 @@ ubuntu:
                 - mkdir /tmp/lib 2> /dev/null
                 - mkdir /tmp/lib/aminer 2> /dev/null
                 - chown -R aminer:aminer /tmp/lib
-                - chown aminer:aminer /usr/bin/AMiner
                 - cp demo/AMiner/demo-config.py /tmp
                 - chmod +x demo/AMiner/aminerDemo.sh
                 - ./demo/AMiner/aminerDemo.sh > /tmp/demo
@@ -113,3 +116,4 @@ ubuntu:
                 - echo 'Branch Coverage:' >> /tmp/report
                 - coverage report >> /tmp/report
                 - cat /tmp/report
+                

@@ -167,7 +167,6 @@ events and send them via "sendmail" transport."""
 # will remain in zombie state until next invocation of list cleanup.
     self.running_sendmail_processes.append(process)
     message_tmp_file.close()
-    print("mail sent!!!!")
 
     self.last_alert_time = trigger_time
     self.events_collected = 0
