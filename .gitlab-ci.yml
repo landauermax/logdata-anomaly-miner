@@ -118,3 +118,5 @@ ubuntu:
                 - coverage report >> /tmp/report
                 - cat /tmp/report
                 
+        after_script:
+                cat /tmp/demo
