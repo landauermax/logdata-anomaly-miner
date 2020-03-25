@@ -22,7 +22,7 @@ debian:
                 - pip3 install coverage
                 - apt install cpulimit -y
                 - apt install systemd -y
-                - service dbus start
+                - systemctl start dbus
 
         script:
                 - ansible-playbook /opt/ansible/playbook.yml
@@ -74,8 +74,6 @@ ubuntu:
                 - service dbus start
                 - ln -s /usr/local/lib/python3.6/dist-packages/pytz /usr/lib/python3/dist-packages/pytz
                 - ln -s /usr/local/lib/python3.6/dist-packages/pytz /usr/lib/python3.6/pytz
-                #- ln -s /usr/local/lib/python3.6/dist-packages/pytz /usr/lib/python3.7/pytz
-                #- ln -s /usr/local/lib/python3.6/dist-packages/pytz /usr/lib/python3.8/pytz
         
         script:
                 - ansible-playbook /opt/ansible/playbook.yml
@@ -89,7 +87,7 @@ ubuntu:
                 - cp demo/AMiner/demo-config.py /tmp
                 - chmod +x /usr/lib/logdata-anomaly-miner/AMiner
                 - chmod +x demo/AMiner/aminerDemo.sh
-                - ./demo/AMiner/aminerDemo.sh > /tmp/demo
+                - runuser -u aminer -- ./demo/AMiner/aminerDemo.sh > /tmp/demo
                 ##########
                 - chown -R aminer:aminer /usr/lib/logdata-anomaly-miner
                 - chown -h aminer:aminer /usr/bin/AMiner
