@@ -22,6 +22,8 @@ debian:
                 - pip3 install coverage
                 - apt install cpulimit -y
                 - service dbus start
+                - ln -s /usr/local/lib/python3.6/dist-packages/pytz /usr/lib/python3/dist-packages/pytz
+                - ln -s /usr/local/lib/python3.6/dist-packages/pytz /usr/lib/python3.6/pytz
 
         script:
                 - ansible-playbook /opt/ansible/playbook.yml
