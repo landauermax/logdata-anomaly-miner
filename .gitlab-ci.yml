@@ -39,7 +39,7 @@ debian:
                 - python3 -m unittest discover -s unit -p '*Test.py' > /dev/null
                 - rm /var/mail/mail
                 - cp demo/AMiner/demo-config.py /tmp
-                #- chown -R aminer:aminer /tmp/lib
+                - chown -R aminer:aminer /tmp/lib
                 #- chown aminer:aminer /tmp/AMinerRemoteLog.txt
                 - chmod +x demo/AMiner/aminerDemo.sh
                 #- chown aminer:aminer ./demo/AMiner/aminerDemo.sh
@@ -91,7 +91,7 @@ ubuntu:
                 - python3 -m unittest discover -s unit -p '*Test.py' > /dev/null
                 - cp demo/AMiner/demo-config.py /tmp
                 - chmod +x demo/AMiner/aminerDemo.sh
-                #- chown -R aminer:aminer /tmp/lib
+                - chown -R aminer:aminer /tmp/lib
                 #- chown aminer:aminer /tmp/AMinerRemoteLog.txt
                # - chown aminer:aminer ./demo/AMiner/aminerDemo.sh
                 - runuser -u aminer -- ./demo/AMiner/aminerDemo.sh > /tmp/demo
