@@ -64,7 +64,7 @@ ubuntu:
                 - service exim4 start
                 - pip3 install coverage
                 - apt install cpulimit -y
-                #- apt install systemd -y
+                - apt install systemd -y
                 - service dbus start
                 - ln -s /usr/local/lib/python3.6/dist-packages/pytz /usr/lib/python3/dist-packages/pytz
                 - ln -s /usr/local/lib/python3.6/dist-packages/pytz /usr/lib/python3.6/pytz
