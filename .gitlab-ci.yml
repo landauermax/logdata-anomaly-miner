@@ -1,10 +1,10 @@
-sonarqube:
+sonarqube_logdata-anomaly-miner:
         image: git-service.ait.ac.at:8010/ict-caiscluster/logdata-anomaly-miner/aminer-debian
 
         script:
                 - $(find /opt/ -type f -name sonar-scanner) -Dsonar.projectName=Aminer-Dev -Dsonar.host.url=http://10.103.251.153:9000 -Dsonar.projectKey=deff975a5561d285e315daa894ab291c7bd10a19 -Dsonar.gitlab.max_major_issues_gate=0
 
-sonarqube aecid-testsuite:
+sonarqube_aecid-testsuite:
         image: git-service.ait.ac.at:8010/ict-caiscluster/logdata-anomaly-miner/aminer-debian
         
         script:
@@ -21,7 +21,6 @@ debian:
                 - apt install procps -y
                 - pip3 install coverage
                 - apt install cpulimit -y
-                - service dbus start
                 - ln -s /usr/local/lib/python3.7/dist-packages/pytz /usr/lib/python3/dist-packages/pytz
                 - ln -s /usr/local/lib/python3.7/dist-packages/pytz /usr/lib/python3.7/pytz
 
@@ -39,13 +38,11 @@ debian:
                 - chown -R aminer:aminer /tmp/lib
                 - chown aminer:aminer /tmp/AMinerRemoteLog.txt
                 - chmod +x demo/AMiner/aminerDemo.sh
-                #- chown aminer:aminer ./demo/AMiner/aminerDemo.sh
                 - runuser -u aminer -- ./demo/AMiner/aminerDemo.sh > /tmp/demo
                 - cd integration
                 - cp config* /tmp
                 - chmod +x aminerIntegrationTest.sh
                 - chmod +x aminerIntegrationTest2.sh
-                #- chown aminer:aminer /tmp/AMinerRemoteLog.txt
                 - ./aminerIntegrationTest.sh
                 - ./aminerIntegrationTest2.sh
                 - rm /var/mail/mail
@@ -67,8 +64,8 @@ ubuntu:
                 - service exim4 start
                 - pip3 install coverage
                 - apt install cpulimit -y
-                - apt install systemd -y
-                - service dbus start
+                #- apt install systemd -y
+                #- service dbus start
                 - ln -s /usr/local/lib/python3.6/dist-packages/pytz /usr/lib/python3/dist-packages/pytz
                 - ln -s /usr/local/lib/python3.6/dist-packages/pytz /usr/lib/python3.6/pytz
         
@@ -85,13 +82,11 @@ ubuntu:
                 - chmod +x demo/AMiner/aminerDemo.sh
                 - chown -R aminer:aminer /tmp/lib
                 - chown aminer:aminer /tmp/AMinerRemoteLog.txt
-               # - chown aminer:aminer ./demo/AMiner/aminerDemo.sh
                 - runuser -u aminer -- ./demo/AMiner/aminerDemo.sh > /tmp/demo
                 - cd integration
                 - cp config* /tmp
                 - chmod +x aminerIntegrationTest.sh
                 - chmod +x aminerIntegrationTest2.sh
-                #- chown aminer:aminer /tmp/AMinerRemoteLog.txt
                 - ./aminerIntegrationTest.sh
                 - ./aminerIntegrationTest2.sh
                 - rm /var/mail/mail
