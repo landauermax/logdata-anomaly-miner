@@ -18,6 +18,7 @@ from aminer.analysis.MissingMatchPathValueDetector import MissingMatchPathListVa
 from aminer.analysis.NewMatchPathDetector import NewMatchPathDetector
 from aminer.analysis.NewMatchPathValueComboDetector import NewMatchPathValueComboDetector
 from aminer.analysis.NewMatchPathValueDetector import NewMatchPathValueDetector
+from aminer.analysis.NewMatchIdValueComboDetector import NewMatchIdValueComboDetector
 # Rules.py
 from aminer.analysis.TimeCorrelationDetector import TimeCorrelationDetector
 from aminer.analysis.TimeCorrelationViolationDetector import TimeCorrelationViolationDetector
