@@ -34,7 +34,8 @@ class NewMatchIdValueComboDetector(
     in all relevant log event types.
     @param min_allowed_time_diff the minimum amount of time in seconds
     after the first appearance of a log atom with a specific id that is
-    waited for other log atoms with the same id to occur. 
+    waited for other log atoms with the same id to occur. The maximum
+    possible time to keep an incomplete combo is 2*min_allowed_time_diff
     @param allow_missing_values_flag when set to True, the detector
     will also use matches, where one of the pathes from targetPathList
     does not refer to an existing parsed data object.
