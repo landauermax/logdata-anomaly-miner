@@ -101,9 +101,13 @@ class EventCorrelationDetector(AtomHandlerInterface, TimeTriggeredComponentInter
                 implication_direction = record[0]
                 trigger_event = tuple(record[1])
                 implied_event = tuple(record[2])
-                max_obs = record[3]
-                min_eval_t = record[4]
-                rule = Implication(trigger_event, implied_event, None, max_obs, min_eval_t)
+                hyp_obs = record[3]
+                pos_obs = record[4]
+                rule_min_eval_true = self.get_min_eval_true(self.max_observations, pos_obs / hyp_obs, self.alpha)
+                rule = Implication(trigger_event, implied_event, None, self.max_observations, rule_min_eval_true)
+                # Set values that will be persisted
+                rule.hypothesis_observations = hyp_obs
+                rule.hypothesis_evaluated_true = pos_obs
                 rule.stable = 1
                 if implication_direction == 'back':
                     if trigger_event in self.back_rules:
@@ -180,7 +184,7 @@ class EventCorrelationDetector(AtomHandlerInterface, TimeTriggeredComponentInter
                 if value is not None:
                     all_values_none = False
                 values.append(value)
-            if all_values_none is True:
+            if all_values_none == True:
                 return
             log_event = tuple(values)
 
@@ -615,11 +619,11 @@ class EventCorrelationDetector(AtomHandlerInterface, TimeTriggeredComponentInter
         for event_a in self.back_rules:
             for implication in self.back_rules[event_a]:
                 known_path_set.add(
-                    ('back', tuple(event_a), tuple(implication.implied_event), implication.max_observations, implication.min_eval_true))
+                    ('back', tuple(event_a), tuple(implication.implied_event), implication.hypothesis_observations, implication.hypothesis_evaluated_true))
         for event_a in self.forward_rules:
             for implication in self.forward_rules[event_a]:
                 known_path_set.add(
-                    ('forward', tuple(event_a), tuple(implication.implied_event), implication.max_observations, implication.min_eval_true))
+                    ('forward', tuple(event_a), tuple(implication.implied_event), implication.hypothesis_observations, implication.hypothesis_evaluated_true))
         PersistencyUtil.store_json(self.persistence_file_name, list(known_path_set))
         self.next_persist_time = None
 
