@@ -62,14 +62,14 @@ class ByteStreamLineAtomizer(StreamAtomizer):
                 # Keep length before dispatching: dispatch will reset the field.
                 data_length = len(self.last_unconsumed_log_atom.raw_data)
                 if self.dispatch_atom(self.last_unconsumed_log_atom):
-                    consumed_length += data_length + 1
+                    consumed_length += data_length + 2
                     continue
                 # Nothing consumed, tell upstream to wait if appropriate.
                 if consumed_length == 0:
                     consumed_length = -1
                 break
 
-            line_end = stream_data.find(b'\n', consumed_length)
+            line_end = stream_data.find(b'\n\n', consumed_length)
             if self.in_overlong_line_flag:
                 if line_end < 0:
                     consumed_length = len(stream_data)
@@ -77,7 +77,7 @@ class ByteStreamLineAtomizer(StreamAtomizer):
                         self.dispatch_event('Overlong line terminated by end of stream', stream_data)
                         self.in_overlong_line_flag = False
                     break
-                consumed_length = line_end + 1
+                consumed_length = line_end + 2
                 self.in_overlong_line_flag = False
                 continue
 
@@ -99,7 +99,7 @@ class ByteStreamLineAtomizer(StreamAtomizer):
             line_length = line_end + 1 - consumed_length
             if line_length > self.max_line_length:
                 self.dispatch_event('Overlong line detected', stream_data[consumed_length:line_end])
-                consumed_length = line_end + 1
+                consumed_length = line_end + 2
                 continue
 
             # This is a normal line.
@@ -116,7 +116,7 @@ class ByteStreamLineAtomizer(StreamAtomizer):
                             log_atom.set_timestamp(ts_match.match_object)
                             break
             if self.dispatch_atom(log_atom):
-                consumed_length = line_end + 1
+                consumed_length = line_end + 2
                 continue
             if consumed_length == 0:
                 # Downstream did not want the data, so tell upstream to block for a while.
